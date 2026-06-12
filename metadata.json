@@ -1,0 +1,6 @@
+{
+  "name": "Chat & Social Feed",
+  "description": "A communication application combining WhatsApp features (chats, typing tags, statuses, reactions) and Facebook features (posts, comments, group forums) with server-side Gemini Meta AI chat assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
