@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -752,20 +752,20 @@ app.post("/api/posts/ai-help", async (req, res) => {
           systemInstruction: "You are a professional social media branding consultant and writer.",
           responseMimeType: "application/json",
           responseSchema: {
-            type: "object",
+            type: Type.OBJECT,
             properties: {
               refinedDraft: {
-                type: "string",
+                type: Type.STRING,
                 description: "The primary beautifully formatted post ready to copy, with correct markdown styling and balanced paragraphs.",
               },
               alternatives: {
-                type: "array",
-                items: { type: "string" },
+                type: Type.ARRAY,
+                items: { type: Type.STRING },
                 description: "2 shorter alternative versions with different hooks.",
               },
               suggestedHashtags: {
-                type: "array",
-                items: { type: "string" },
+                type: Type.ARRAY,
+                items: { type: Type.STRING },
                 description: "Between 3 to 6 high-traffic contextual hashtags.",
               }
             },
@@ -815,8 +815,7 @@ app.post("/api/ai/generate-image", async (req, res) => {
         },
         config: {
           imageConfig: {
-            aspectRatio: aspectRatio || "1:1",
-            imageSize: "1K"
+            aspectRatio: aspectRatio || "1:1"
           }
         }
       });
